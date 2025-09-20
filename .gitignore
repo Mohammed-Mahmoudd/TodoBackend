@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Env files (مفاتيح سرية زي JWT_SECRET, MONGODB_URI)
+.env
+
+# Log files
+npm-debug.log
+yarn-error.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
