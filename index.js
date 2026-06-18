@@ -15,11 +15,11 @@ const Tasks = require("./models/Task");
 
 mongoose
   .connect(
-    "mongodb+srv://mohammed:aEvGKeuICi320WNP@todocluster.n2iufgs.mongodb.net/?retryWrites=true&w=majority&appName=TodoCluster"
+    "mongodb+srv://mohammed:aEvGKeuICi320WNP@todocluster.n2iufgs.mongodb.net/?retryWrites=true&w=majority&appName=TodoCluster",
   )
   .then(() => {
     console.log("Monogoose is Opened Successfully");
-    app.listen("3001", () => {
+    app.listen("3004", () => {
       console.log("Port Is Opened Successfully");
     });
   })
@@ -79,7 +79,7 @@ app.post("/Login", async (req, res) => {
   if (user) {
     const compareResult = await bcrypt.compare(
       req.body.password,
-      user.password
+      user.password,
     );
 
     if (compareResult) {
@@ -176,7 +176,7 @@ app.put("/updateCategory", authMiddleWare, async (req, res) => {
     const UpdatedCategory = await Categories.findByIdAndUpdate(
       categoryId,
       { categoryName: newCategoryName, userId: id },
-      { new: true }
+      { new: true },
     );
 
     if (!UpdatedCategory) {
@@ -304,7 +304,7 @@ app.put("/updateTask", authMiddleWare, async (req, res) => {
         taskDescription: newDescription,
         status: newStatus,
       },
-      { new: true }
+      { new: true },
     );
 
     res.json({
